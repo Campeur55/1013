@@ -1,4 +1,4 @@
-import { ChevronDown, Target, TrendingUp, Shield, Users, Award, Globe } from 'lucide-react';
+import { ChevronDown, Target, TrendingUp, Shield, Users, Award, Globe, Circle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -15,21 +15,28 @@ function App() {
   return (
     <div className="bg-black text-white overflow-x-hidden">
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-sm border-b border-[#F21B2D]/30' : 'bg-transparent'}`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#590505]/95 backdrop-blur-sm border-b border-[#D98D30]/30' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#F21B2D] to-[#A60321] flex items-center justify-center transform rotate-45">
-              <span className="text-white font-bold text-xl transform -rotate-45">7R</span>
+          <div className="flex items-center gap-4">
+            {/* Roulette Ball Logo */}
+            <div className="relative w-14 h-14 flex items-center justify-center">
+              <div className="absolute w-14 h-14 rounded-full bg-gradient-to-br from-[#F21313] via-[#BF3111] to-[#590505] shadow-lg shadow-[#F21313]/50"></div>
+              <div className="absolute w-11 h-11 rounded-full bg-gradient-radial from-[#F21313] to-[#BF3111]"></div>
+              <div className="absolute w-4 h-4 rounded-full bg-white/90 top-3 left-4 blur-sm"></div>
+              <div className="absolute w-2 h-2 rounded-full bg-white top-3 left-5"></div>
             </div>
-            <span className="text-2xl font-bold tracking-wider">7AMRA ROYALE</span>
+            <div>
+              <span className="text-2xl font-bold tracking-[0.3em] text-[#F2DEA2]">7AMRA</span>
+              <span className="text-2xl font-bold tracking-[0.3em] text-white"> ROYALE</span>
+            </div>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#mission" className="hover:text-[#F21B2D] transition-colors">Mission</a>
-            <a href="#intelligence" className="hover:text-[#F21B2D] transition-colors">Intelligence</a>
-            <a href="#strategy" className="hover:text-[#F21B2D] transition-colors">Strategy</a>
-            <a href="#vision" className="hover:text-[#F21B2D] transition-colors">Vision</a>
-            <button className="bg-[#F21B2D] hover:bg-[#A60321] px-6 py-2 rounded transition-all transform hover:scale-105">
-              Explore
+            <a href="#mission" className="hover:text-[#D98D30] transition-colors uppercase tracking-wider text-sm">Mission</a>
+            <a href="#intelligence" className="hover:text-[#D98D30] transition-colors uppercase tracking-wider text-sm">Intelligence</a>
+            <a href="#strategy" className="hover:text-[#D98D30] transition-colors uppercase tracking-wider text-sm">Strategy</a>
+            <a href="#vision" className="hover:text-[#D98D30] transition-colors uppercase tracking-wider text-sm">Vision</a>
+            <button className="bg-[#BF3111] hover:bg-[#F21313] px-6 py-2 transition-all transform hover:scale-105 border border-[#D98D30] uppercase tracking-widest text-sm">
+              Enter
             </button>
           </div>
         </div>
@@ -37,47 +44,72 @@ function App() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-[#A60321]/20 to-black"></div>
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(242, 27, 45, 0.1) 0%, transparent 50%)',
-          backgroundSize: '100px 100px'
+        <div className="absolute inset-0 bg-gradient-to-br from-[#590505] via-black to-[#590505]"></div>
+
+        {/* Casino Pattern Background */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F2DEA2' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }}></div>
 
-        {/* Animated shapes */}
-        <div className="absolute top-20 right-20 w-64 h-64 bg-[#F21B2D]/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#F22E52]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        {/* Animated roulette balls */}
+        <div className="absolute top-20 right-20 w-32 h-32 rounded-full bg-gradient-to-br from-[#F21313] to-[#BF3111] blur-2xl animate-pulse opacity-20"></div>
+        <div className="absolute bottom-20 left-20 w-48 h-48 rounded-full bg-gradient-to-br from-[#D98D30] to-[#BF3111] blur-3xl animate-pulse delay-1000 opacity-10"></div>
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 rounded-full bg-[#F21313] blur-2xl animate-pulse opacity-10" style={{animationDelay: '2s'}}></div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl">
-          <div className="mb-6 inline-block px-6 py-2 border border-[#F21B2D] rounded-full text-sm tracking-widest text-[#F21B2D] animate-fade-in">
-            ACADEMIC CASE STUDY • 11/23
+          {/* Casino Chips Decoration */}
+          <div className="mb-8 flex justify-center gap-4">
+            <div className="w-12 h-12 rounded-full border-4 border-[#F2DEA2] bg-[#590505] flex items-center justify-center transform rotate-12">
+              <span className="text-[#F2DEA2] text-xs font-bold">007</span>
+            </div>
+            <div className="mb-6 inline-block px-8 py-3 border-2 border-[#D98D30] text-sm tracking-[0.3em] text-[#F2DEA2] animate-fade-in uppercase">
+              Classified • 11/23
+            </div>
+            <div className="w-12 h-12 rounded-full border-4 border-[#BF3111] bg-[#F21313] flex items-center justify-center transform -rotate-12">
+              <span className="text-white text-xs font-bold">7R</span>
+            </div>
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-[#F21B2D]">7AMRA</span> ROYALE
+
+          <h1 className="text-7xl md:text-9xl font-bold mb-8 leading-tight tracking-wider">
+            <span className="text-[#F2DEA2]">7AMRA</span>
+            <br/>
+            <span className="text-[#F21313]">ROYALE</span>
           </h1>
-          <p className="text-3xl md:text-4xl mb-4 font-light tracking-wide">Where Fortune Meets Fire</p>
-          <p className="text-xl md:text-2xl mb-8 text-gray-400 font-arabic">بلعب الحظ مع الحمرا</p>
-          <p className="text-lg mb-12 max-w-3xl mx-auto leading-relaxed text-gray-300">
-            Strategic Management Analysis • Tunisia's Entertainment Sector
+
+          <div className="h-1 w-64 mx-auto bg-gradient-to-r from-transparent via-[#D98D30] to-transparent mb-8"></div>
+
+          <p className="text-3xl md:text-4xl mb-6 tracking-wide text-[#F2DEA2]">WHERE FORTUNE MEETS FIRE</p>
+          <p className="text-2xl md:text-3xl mb-8 text-[#D98D30] font-arabic">بلعب الحظ مع الحمرا</p>
+          <p className="text-lg mb-12 max-w-3xl mx-auto leading-relaxed text-gray-300 tracking-wide">
+            STRATEGIC MANAGEMENT ANALYSIS • TUNISIA ENTERTAINMENT SECTOR
           </p>
-          <button className="group relative bg-[#F21B2D] hover:bg-[#A60321] px-12 py-4 rounded text-lg font-semibold transition-all transform hover:scale-105 hover:shadow-2xl hover:shadow-[#F21B2D]/50">
-            Begin Mission
-            <span className="absolute inset-0 rounded bg-white/20 transform scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+
+          <button className="group relative bg-gradient-to-r from-[#BF3111] to-[#F21313] hover:from-[#F21313] hover:to-[#BF3111] px-16 py-5 border-2 border-[#D98D30] text-lg font-bold tracking-[0.2em] transition-all transform hover:scale-105 hover:shadow-2xl hover:shadow-[#F21313]/50 uppercase">
+            <span className="relative z-10">Enter Casino</span>
+            <div className="absolute inset-0 bg-[#F2DEA2] opacity-0 group-hover:opacity-10 transition-opacity"></div>
           </button>
         </div>
 
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-8 h-8 text-[#F21B2D]" />
+          <ChevronDown className="w-8 h-8 text-[#D98D30]" />
         </div>
       </section>
 
       {/* Key Phrase Section */}
-      <section className="py-20 bg-gradient-to-r from-[#A60321] to-[#F21B2D] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)'
+      <section className="py-24 bg-gradient-to-r from-[#590505] via-[#BF3111] to-[#590505] relative overflow-hidden border-y-4 border-[#D98D30]">
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(242,222,162,0.3) 10px, rgba(242,222,162,0.3) 20px)'
         }}></div>
+        {/* Roulette numbers background */}
+        <div className="absolute inset-0 opacity-10 text-[#F2DEA2] text-9xl font-bold overflow-hidden">
+          <div className="flex gap-12 animate-slide whitespace-nowrap">
+            <span>0</span><span>32</span><span>15</span><span>19</span><span>4</span><span>21</span><span>2</span><span>25</span>
+          </div>
+        </div>
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-          <p className="text-5xl md:text-6xl font-bold mb-6">الحمرا مش برّا، الحمرا هنا</p>
-          <p className="text-2xl font-light">The opportunity is not outside, the opportunity is here.</p>
+          <p className="text-5xl md:text-6xl font-bold mb-8 text-[#F2DEA2] tracking-wider">الحمرا مش برّا، الحمرا هنا</p>
+          <div className="h-1 w-48 mx-auto bg-[#F2DEA2] mb-8"></div>
+          <p className="text-2xl uppercase tracking-widest text-white">The opportunity is not outside, the opportunity is here.</p>
         </div>
       </section>
 
@@ -85,25 +117,26 @@ function App() {
       <section id="mission" className="py-32 bg-black relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-1 h-16 bg-gradient-to-b from-[#F21B2D] to-[#A60321]"></div>
+            <div className="w-1 h-20 bg-gradient-to-b from-[#F21313] via-[#D98D30] to-[#F21313]"></div>
             <div>
-              <span className="text-[#F21B2D] text-sm tracking-widest">SECTION 01</span>
-              <h2 className="text-5xl font-bold">Mission Briefing</h2>
+              <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 01</span>
+              <h2 className="text-5xl font-bold tracking-wide text-[#F2DEA2]">MISSION BRIEFING</h2>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-12 mt-16">
             <div className="space-y-6">
-              <p className="text-xl leading-relaxed text-gray-300">
-                This strategic management case study examines the hypothetical market entry strategy for <span className="text-[#F21B2D] font-semibold">'7amra Royale'</span>, a conceptual venture into Tunisia's entertainment sector.
+              <p className="text-xl leading-relaxed text-gray-300 tracking-wide">
+                THIS STRATEGIC MANAGEMENT CASE STUDY EXAMINES THE HYPOTHETICAL MARKET ENTRY STRATEGY FOR <span className="text-[#F21313] font-bold">'7AMRA ROYALE'</span>, A CONCEPTUAL VENTURE INTO TUNISIA'S ENTERTAINMENT SECTOR.
               </p>
-              <p className="text-xl leading-relaxed text-gray-300">
-                This analysis explores market dynamics, competitive challenges, and strategic positioning in a complex regulatory environment.
+              <p className="text-xl leading-relaxed text-gray-300 tracking-wide">
+                THIS ANALYSIS EXPLORES MARKET DYNAMICS, COMPETITIVE CHALLENGES, AND STRATEGIC POSITIONING IN A COMPLEX REGULATORY ENVIRONMENT.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-[#A60321]/20 to-transparent border border-[#F21B2D]/30 p-8 rounded-lg">
-              <h3 className="text-2xl font-bold mb-6 text-[#F21B2D]">Framework</h3>
-              <p className="text-lg leading-relaxed text-gray-300">
-                The project employs military-style operational terminology to frame strategic business concepts, making this an engaging framework for understanding market reconnaissance, competitive analysis, and strategic planning methodologies.
+            <div className="bg-[#590505]/30 border-2 border-[#D98D30] p-8 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-[#F21313]/10 blur-2xl"></div>
+              <h3 className="text-2xl font-bold mb-6 text-[#D98D30] tracking-widest uppercase">Framework</h3>
+              <p className="text-lg leading-relaxed text-gray-300 tracking-wide">
+                THE PROJECT EMPLOYS MILITARY-STYLE OPERATIONAL TERMINOLOGY TO FRAME STRATEGIC BUSINESS CONCEPTS, MAKING THIS AN ENGAGING FRAMEWORK FOR UNDERSTANDING MARKET RECONNAISSANCE, COMPETITIVE ANALYSIS, AND STRATEGIC PLANNING METHODOLOGIES.
               </p>
             </div>
           </div>
@@ -111,77 +144,86 @@ function App() {
       </section>
 
       {/* Phase Alpha */}
-      <section className="py-32 bg-gradient-to-b from-black to-[#0a0000] relative">
+      <section className="py-32 bg-gradient-to-b from-black via-[#590505]/20 to-black relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-1 h-16 bg-gradient-to-b from-[#F21B2D] to-[#A60321]"></div>
+            <div className="w-1 h-20 bg-gradient-to-b from-[#F21313] via-[#D98D30] to-[#F21313]"></div>
             <div>
-              <span className="text-[#F21B2D] text-sm tracking-widest">SECTION 10</span>
-              <h2 className="text-5xl font-bold">Phase Alpha: The Genesis</h2>
+              <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 10</span>
+              <h2 className="text-5xl font-bold tracking-wide text-[#F2DEA2]">PHASE ALPHA: THE GENESIS</h2>
             </div>
           </div>
 
           <div className="mt-16 grid md:grid-cols-3 gap-8">
             {[
-              { icon: Target, title: "Market Analysis", question: "What drives consumer behavior in highly regulated entertainment markets?" },
-              { icon: TrendingUp, title: "Competitive Positioning", question: "How can a new entrant differentiate against established international competitors?" },
-              { icon: Shield, title: "Cultural Adaptation", question: "What role does cultural sensitivity play in market penetration strategy?" }
+              { icon: Target, title: "MARKET ANALYSIS", question: "WHAT DRIVES CONSUMER BEHAVIOR IN HIGHLY REGULATED ENTERTAINMENT MARKETS?" },
+              { icon: TrendingUp, title: "COMPETITIVE POSITIONING", question: "HOW CAN A NEW ENTRANT DIFFERENTIATE AGAINST ESTABLISHED INTERNATIONAL COMPETITORS?" },
+              { icon: Shield, title: "CULTURAL ADAPTATION", question: "WHAT ROLE DOES CULTURAL SENSITIVITY PLAY IN MARKET PENETRATION STRATEGY?" }
             ].map((item, idx) => (
-              <div key={idx} className="group bg-black border border-[#F21B2D]/30 p-8 rounded-lg hover:border-[#F21B2D] transition-all hover:shadow-xl hover:shadow-[#F21B2D]/20 transform hover:-translate-y-2">
-                <item.icon className="w-12 h-12 text-[#F21B2D] mb-4" />
-                <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{item.question}</p>
+              <div key={idx} className="group bg-[#590505]/20 border-2 border-[#D98D30]/40 p-8 hover:border-[#F21313] transition-all hover:shadow-xl hover:shadow-[#F21313]/30 transform hover:-translate-y-2 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 rounded-full bg-[#F21313]/5 blur-xl"></div>
+                <item.icon className="w-12 h-12 text-[#D98D30] mb-4 relative z-10" />
+                <h3 className="text-xl font-bold mb-4 text-[#F2DEA2] tracking-wider relative z-10">{item.title}</h3>
+                <p className="text-gray-400 leading-relaxed tracking-wide relative z-10">{item.question}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-16 text-center p-12 bg-gradient-to-r from-[#A60321]/20 via-[#F21B2D]/20 to-[#A60321]/20 rounded-lg border border-[#F21B2D]/30">
-            <p className="text-3xl md:text-4xl font-bold mb-4">
-              "It's time to win. Time to build something that changes the game entirely."
+          <div className="mt-16 text-center p-12 bg-gradient-to-r from-[#590505]/40 via-[#BF3111]/40 to-[#590505]/40 border-t-4 border-b-4 border-[#D98D30] relative overflow-hidden">
+            <div className="absolute inset-0 opacity-5" style={{
+              backgroundImage: 'radial-gradient(circle, #F2DEA2 1px, transparent 1px)',
+              backgroundSize: '30px 30px'
+            }}></div>
+            <p className="text-4xl md:text-5xl font-bold mb-6 text-[#F2DEA2] tracking-wide relative z-10">
+              "IT'S TIME TO WIN. TIME TO BUILD SOMETHING THAT CHANGES THE GAME ENTIRELY."
             </p>
-            <p className="text-2xl text-[#F21B2D] font-arabic">حان وقت الفوز</p>
+            <div className="h-1 w-32 mx-auto bg-[#F21313] mb-6"></div>
+            <p className="text-3xl text-[#D98D30] font-arabic relative z-10">حان وقت الفوز</p>
           </div>
         </div>
       </section>
 
       {/* Intelligence Report */}
       <section id="intelligence" className="py-32 bg-black relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#F21B2D]/5 to-transparent"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#F21313]/5 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-[#D98D30]/5 blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-1 h-16 bg-gradient-to-b from-[#F21B2D] to-[#A60321]"></div>
+            <div className="w-1 h-20 bg-gradient-to-b from-[#F21313] via-[#D98D30] to-[#F21313]"></div>
             <div>
-              <span className="text-[#F21B2D] text-sm tracking-widest">SECTION 11</span>
-              <h2 className="text-5xl font-bold">Intelligence Report</h2>
-              <p className="text-xl text-gray-400 mt-2">Market Reconnaissance</p>
+              <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 11</span>
+              <h2 className="text-5xl font-bold tracking-wide text-[#F2DEA2]">INTELLIGENCE REPORT</h2>
+              <p className="text-xl text-[#BF3111] mt-2 tracking-widest uppercase">Market Reconnaissance</p>
             </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             {[
-              { label: "Annual Growth Rate", value: "12%", desc: "Year-over-year market expansion" },
-              { label: "Capital Outflow", value: "$15M", desc: "Annual spending on foreign platforms" },
-              { label: "Youth Demographics", value: "42%", desc: "Population aged 18-35" }
+              { label: "ANNUAL GROWTH RATE", value: "12%", desc: "YEAR-OVER-YEAR MARKET EXPANSION" },
+              { label: "CAPITAL OUTFLOW", value: "$15M", desc: "ANNUAL SPENDING ON FOREIGN PLATFORMS" },
+              { label: "YOUTH DEMOGRAPHICS", value: "42%", desc: "POPULATION AGED 18-35" }
             ].map((stat, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-[#A60321]/20 to-transparent border-l-4 border-[#F21B2D] p-8 rounded-lg">
-                <p className="text-sm text-gray-400 mb-2">{stat.label}</p>
-                <p className="text-6xl font-bold text-[#F21B2D] mb-4">{stat.value}</p>
-                <p className="text-gray-300">{stat.desc}</p>
+              <div key={idx} className="bg-[#590505]/30 border-l-4 border-[#D98D30] p-8 relative overflow-hidden group hover:bg-[#590505]/50 transition-all">
+                <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-[#F21313]/10 blur-xl"></div>
+                <p className="text-sm text-[#D98D30] mb-2 tracking-widest uppercase relative z-10">{stat.label}</p>
+                <p className="text-7xl font-bold text-[#F21313] mb-4 relative z-10 text-shadow-red">{stat.value}</p>
+                <p className="text-gray-300 tracking-wide uppercase text-sm relative z-10">{stat.desc}</p>
               </div>
             ))}
           </div>
 
           <div className="mt-16 space-y-8">
             {[
-              { title: "Unmet Demand", content: "The steady annual growth rate and significant capital outflow to foreign platforms confirm a robust, unmet domestic demand. Consumers actively seek alternatives, indicating a ripe opportunity for local market solutions." },
-              { title: "Digital Native Audience", content: "The substantial youth demographic (42% in the 18-35 age bracket) represents a digitally-native audience receptive to modern, sophisticated online entertainment experiences with mobile-first design." },
-              { title: "Innovation Imperative", content: "Current market conditions necessitate an approach that is both innovative and compliant, offering a superior alternative to existing offshore options while respecting local regulations and cultural norms." },
-              { title: "Market Gap", content: "The $15M annual capital outflow represents revenue leakage to international competitors, highlighting a significant market gap that a well-positioned local player could capture." }
+              { title: "UNMET DEMAND", content: "THE STEADY ANNUAL GROWTH RATE AND SIGNIFICANT CAPITAL OUTFLOW TO FOREIGN PLATFORMS CONFIRM A ROBUST, UNMET DOMESTIC DEMAND. CONSUMERS ACTIVELY SEEK ALTERNATIVES, INDICATING A RIPE OPPORTUNITY FOR LOCAL MARKET SOLUTIONS." },
+              { title: "DIGITAL NATIVE AUDIENCE", content: "THE SUBSTANTIAL YOUTH DEMOGRAPHIC (42% IN THE 18-35 AGE BRACKET) REPRESENTS A DIGITALLY-NATIVE AUDIENCE RECEPTIVE TO MODERN, SOPHISTICATED ONLINE ENTERTAINMENT EXPERIENCES WITH MOBILE-FIRST DESIGN." },
+              { title: "INNOVATION IMPERATIVE", content: "CURRENT MARKET CONDITIONS NECESSITATE AN APPROACH THAT IS BOTH INNOVATIVE AND COMPLIANT, OFFERING A SUPERIOR ALTERNATIVE TO EXISTING OFFSHORE OPTIONS WHILE RESPECTING LOCAL REGULATIONS AND CULTURAL NORMS." },
+              { title: "MARKET GAP", content: "THE $15M ANNUAL CAPITAL OUTFLOW REPRESENTS REVENUE LEAKAGE TO INTERNATIONAL COMPETITORS, HIGHLIGHTING A SIGNIFICANT MARKET GAP THAT A WELL-POSITIONED LOCAL PLAYER COULD CAPTURE." }
             ].map((item, idx) => (
-              <div key={idx} className="bg-black border border-[#F21B2D]/30 p-8 rounded-lg hover:border-[#F21B2D] transition-all">
-                <h3 className="text-2xl font-bold mb-4 text-[#F21B2D]">{item.title}</h3>
-                <p className="text-gray-300 text-lg leading-relaxed">{item.content}</p>
+              <div key={idx} className="bg-black border-2 border-[#D98D30]/30 p-8 hover:border-[#F21313] transition-all relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#590505]/0 via-[#590505]/20 to-[#590505]/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <h3 className="text-2xl font-bold mb-4 text-[#D98D30] tracking-widest relative z-10">{item.title}</h3>
+                <p className="text-gray-300 text-lg leading-relaxed tracking-wide relative z-10">{item.content}</p>
               </div>
             ))}
           </div>
@@ -189,14 +231,14 @@ function App() {
       </section>
 
       {/* Threat Assessment */}
-      <section className="py-32 bg-gradient-to-b from-black to-[#0a0000]">
+      <section className="py-32 bg-gradient-to-b from-black via-[#590505]/10 to-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-1 h-16 bg-gradient-to-b from-[#F21B2D] to-[#A60321]"></div>
+            <div className="w-1 h-20 bg-gradient-to-b from-[#F21313] via-[#D98D30] to-[#F21313]"></div>
             <div>
-              <span className="text-[#F21B2D] text-sm tracking-widest">SECTION 12</span>
-              <h2 className="text-5xl font-bold">Threat Assessment</h2>
-              <p className="text-xl text-gray-400 mt-2">Hostile Territory: Market Challenges</p>
+              <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 12</span>
+              <h2 className="text-5xl font-bold tracking-wide text-[#F2DEA2]">THREAT ASSESSMENT</h2>
+              <p className="text-xl text-[#BF3111] mt-2 tracking-widest uppercase">Hostile Territory: Market Challenges</p>
             </div>
           </div>
 
