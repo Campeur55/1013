@@ -1,8 +1,11 @@
-import { ChevronDown, Target, TrendingUp, Shield, Users, Award, Globe, Circle } from 'lucide-react';
+import { ChevronDown, Target, TrendingUp, Shield, Users, Award, Globe, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
+  // Removed dynamic left label; map no longer needed
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,38 +15,136 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const sectionIds = ['mission', 'intelligence', 'strategy', 'vision'];
+    const sections = sectionIds
+      .map(id => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries.filter(e => e.isIntersecting);
+        if (visible.length === 0) return;
+
+        // Prefer the section closest to the top (top >= 0 and smallest),
+        // fallback to highest intersection ratio.
+        const headerOffsetPx = 80; // approx header height
+        let best = visible
+          .filter(e => e.target.getBoundingClientRect().top >= headerOffsetPx * -0.25)
+          .sort((a, b) => a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top)[0];
+
+        if (!best) {
+          best = visible.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        }
+
+        const id = (best.target as HTMLElement).id;
+        if (id && id !== activeSection) {
+          setActiveSection(id);
+          const currentHash = window.location.hash.replace('#', '');
+          if (currentHash !== id) {
+            history.replaceState(null, '', `#${id}`);
+          }
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px -55% 0px',
+        threshold: [0.1, 0.25, 0.5, 0.75]
+      }
+    );
+
+    sections.forEach(sec => observer.observe(sec));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    // prevent background scroll when mobile menu is open
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [mobileOpen]);
+
   return (
     <div className="bg-black text-white overflow-x-hidden">
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#590505]/95 backdrop-blur-sm border-b border-[#D98D30]/30' : 'bg-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3 md:gap-4">
             {/* Roulette Ball Logo */}
-            <div className="relative w-14 h-14 flex items-center justify-center">
-              <div className="absolute w-14 h-14 rounded-full bg-gradient-to-br from-[#F21313] via-[#BF3111] to-[#590505] shadow-lg shadow-[#F21313]/50"></div>
-              <div className="absolute w-11 h-11 rounded-full bg-gradient-radial from-[#F21313] to-[#BF3111]"></div>
-              <div className="absolute w-4 h-4 rounded-full bg-white/90 top-3 left-4 blur-sm"></div>
-              <div className="absolute w-2 h-2 rounded-full bg-white top-3 left-5"></div>
+            <div className="relative w-12 h-12 md:w-14 md:h-14 flex items-center justify-center">
+              <div className="absolute w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-[#F21313] via-[#BF3111] to-[#590505] shadow-lg shadow-[#F21313]/50"></div>
+              <div className="absolute w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-radial from-[#F21313] to-[#BF3111]"></div>
+              <div className="absolute w-4 h-4 rounded-full bg-white/90 top-2.5 left-3.5 md:top-3 md:left-4 blur-sm"></div>
+              <div className="absolute w-2 h-2 rounded-full bg-white top-2.5 left-4 md:top-3 md:left-5"></div>
             </div>
-            <div>
-              <span className="text-2xl font-bold tracking-[0.3em] text-[#F2DEA2]">7AMRA</span>
-              <span className="text-2xl font-bold tracking-[0.3em] text-white"> ROYALE</span>
+            <div className="leading-none">
+              <span className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-[#F2DEA2]">7AMRA</span>
+              <span className="text-xl sm:text-2xl font-bold tracking-[0.3em] text-white"> ROYALE</span>
             </div>
           </div>
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#mission" className="hover:text-[#D98D30] transition-colors uppercase tracking-wider text-sm">Mission</a>
-            <a href="#intelligence" className="hover:text-[#D98D30] transition-colors uppercase tracking-wider text-sm">Intelligence</a>
-            <a href="#strategy" className="hover:text-[#D98D30] transition-colors uppercase tracking-wider text-sm">Strategy</a>
-            <a href="#vision" className="hover:text-[#D98D30] transition-colors uppercase tracking-wider text-sm">Vision</a>
-            <button className="bg-[#BF3111] hover:bg-[#F21313] px-6 py-2 transition-all transform hover:scale-105 border border-[#D98D30] uppercase tracking-widest text-sm">
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            <a href="#mission" aria-current={activeSection === 'mission' ? 'page' : undefined} className={`transition-colors uppercase tracking-wider text-sm ${activeSection === 'mission' ? 'text-[#D98D30]' : 'hover:text-[#D98D30] text-white'}`}>Mission</a>
+            <a href="#intelligence" aria-current={activeSection === 'intelligence' ? 'page' : undefined} className={`transition-colors uppercase tracking-wider text-sm ${activeSection === 'intelligence' ? 'text-[#D98D30]' : 'hover:text-[#D98D30] text-white'}`}>Intelligence</a>
+            <a href="#strategy" aria-current={activeSection === 'strategy' ? 'page' : undefined} className={`transition-colors uppercase tracking-wider text-sm ${activeSection === 'strategy' ? 'text-[#D98D30]' : 'hover:text-[#D98D30] text-white'}`}>Strategy</a>
+            <a href="#vision" aria-current={activeSection === 'vision' ? 'page' : undefined} className={`transition-colors uppercase tracking-wider text-sm ${activeSection === 'vision' ? 'text-[#D98D30]' : 'hover:text-[#D98D30] text-white'}`}>Vision</a>
+            <button className="bg-[#BF3111] hover:bg-[#F21313] px-5 lg:px-6 py-2 transition-all transform hover:scale-105 border border-[#D98D30] uppercase tracking-widest text-sm">
               Enter
             </button>
           </div>
+
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 border border-[#D98D30]/40 hover:border-[#D98D30] text-[#F2DEA2]"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setMobileOpen(v => !v)}
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+
+        {/* Mobile nav panel */}
+        {mobileOpen && (
+          <div className="md:hidden fixed inset-0 z-40 bg-black/80 backdrop-blur-sm">
+            <div className="absolute top-16 left-0 right-0 mx-4 rounded border border-[#D98D30]/30 bg-[#0a0000]">
+              <nav className="flex flex-col divide-y divide-[#D98D30]/20">
+                {[
+                  { id: 'mission', label: 'Mission' },
+                  { id: 'intelligence', label: 'Intelligence' },
+                  { id: 'strategy', label: 'Strategy' },
+                  { id: 'vision', label: 'Vision' }
+                ].map(item => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={() => setMobileOpen(false)}
+                    aria-current={activeSection === item.id ? 'page' : undefined}
+                    className={`px-5 py-4 uppercase tracking-wider ${activeSection === item.id ? 'text-[#D98D30]' : 'text-white hover:text-[#D98D30]'}`}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+                <div className="px-5 py-4">
+                  <button
+                    onClick={() => setMobileOpen(false)}
+                    className="w-full bg-[#BF3111] hover:bg-[#F21313] px-6 py-3 transition-all border border-[#D98D30] uppercase tracking-widest text-sm"
+                  >
+                    Enter
+                  </button>
+                </div>
+              </nav>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-28">
         <div className="absolute inset-0 bg-gradient-to-br from-[#590505] via-black to-[#590505]"></div>
 
         {/* Casino Pattern Background */}
@@ -57,34 +158,23 @@ function App() {
         <div className="absolute top-1/2 left-1/4 w-24 h-24 rounded-full bg-[#F21313] blur-2xl animate-pulse opacity-10" style={{animationDelay: '2s'}}></div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl">
-          {/* Casino Chips Decoration */}
-          <div className="mb-8 flex justify-center gap-4">
-            <div className="w-12 h-12 rounded-full border-4 border-[#F2DEA2] bg-[#590505] flex items-center justify-center transform rotate-12">
-              <span className="text-[#F2DEA2] text-xs font-bold">007</span>
-            </div>
-            <div className="mb-6 inline-block px-8 py-3 border-2 border-[#D98D30] text-sm tracking-[0.3em] text-[#F2DEA2] animate-fade-in uppercase">
-              Classified • 11/23
-            </div>
-            <div className="w-12 h-12 rounded-full border-4 border-[#BF3111] bg-[#F21313] flex items-center justify-center transform -rotate-12">
-              <span className="text-white text-xs font-bold">7R</span>
-            </div>
-          </div>
+          {/* Chips row removed per request */}
 
-          <h1 className="text-7xl md:text-9xl font-bold mb-8 leading-tight tracking-wider">
+          <h1 className="text-5xl sm:text-6xl md:text-9xl font-bold mb-8 leading-tight tracking-wider">
             <span className="text-[#F2DEA2]">7AMRA</span>
             <br/>
             <span className="text-[#F21313]">ROYALE</span>
           </h1>
 
-          <div className="h-1 w-64 mx-auto bg-gradient-to-r from-transparent via-[#D98D30] to-transparent mb-8"></div>
+          <div className="h-1 w-48 md:w-64 mx-auto bg-gradient-to-r from-transparent via-[#D98D30] to-transparent mb-8"></div>
 
-          <p className="text-3xl md:text-4xl mb-6 tracking-wide text-[#F2DEA2]">WHERE FORTUNE MEETS FIRE</p>
-          <p className="text-2xl md:text-3xl mb-8 text-[#D98D30] font-arabic">بلعب الحظ مع الحمرا</p>
-          <p className="text-lg mb-12 max-w-3xl mx-auto leading-relaxed text-gray-300 tracking-wide">
+          <p className="text-2xl md:text-4xl mb-6 tracking-wide text-[#F2DEA2]">WHERE FORTUNE MEETS FIRE</p>
+          <p className="text-xl md:text-2xl mb-8 text-[#D98D30] font-arabic">بلعب الحظ مع الحمرا</p>
+          <p className="text-base md:text-lg mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed text-gray-300 tracking-wide">
             STRATEGIC MANAGEMENT ANALYSIS • TUNISIA ENTERTAINMENT SECTOR
           </p>
 
-          <button className="group relative bg-gradient-to-r from-[#BF3111] to-[#F21313] hover:from-[#F21313] hover:to-[#BF3111] px-16 py-5 border-2 border-[#D98D30] text-lg font-bold tracking-[0.2em] transition-all transform hover:scale-105 hover:shadow-2xl hover:shadow-[#F21313]/50 uppercase">
+          <button className="group relative bg-gradient-to-r from-[#BF3111] to-[#F21313] hover:from-[#F21313] hover:to-[#BF3111] px-12 py-4 md:px-16 md:py-5 border-2 border-[#D98D30] text-base md:text-lg font-bold tracking-[0.2em] transition-all transform hover:scale-105 hover:shadow-2xl hover:shadow-[#F21313]/50 uppercase">
             <span className="relative z-10">Enter Casino</span>
             <div className="absolute inset-0 bg-[#F2DEA2] opacity-0 group-hover:opacity-10 transition-opacity"></div>
           </button>
@@ -114,7 +204,7 @@ function App() {
       </section>
 
       {/* Mission Briefing */}
-      <section id="mission" className="py-32 bg-black relative">
+      <section id="mission" className="py-32 bg-black relative scroll-mt-24 md:scroll-mt-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-20 bg-gradient-to-b from-[#F21313] via-[#D98D30] to-[#F21313]"></div>
@@ -184,7 +274,7 @@ function App() {
       </section>
 
       {/* Intelligence Report */}
-      <section id="intelligence" className="py-32 bg-black relative overflow-hidden">
+      <section id="intelligence" className="py-32 bg-black relative overflow-hidden scroll-mt-24 md:scroll-mt-28">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#F21313]/5 to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-[#D98D30]/5 blur-3xl"></div>
 
@@ -280,7 +370,7 @@ function App() {
       </section>
 
       {/* Strategic Framework */}
-      <section id="strategy" className="py-32 bg-black relative">
+      <section id="strategy" className="py-32 bg-black relative scroll-mt-24 md:scroll-mt-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-16 bg-gradient-to-b from-[#F21B2D] to-[#A60321]"></div>
@@ -317,7 +407,7 @@ function App() {
       </section>
 
       {/* Vision Section */}
-      <section id="vision" className="py-32 bg-gradient-to-b from-black via-[#0a0000] to-black relative overflow-hidden">
+      <section id="vision" className="py-32 bg-gradient-to-b from-black via-[#0a0000] to-black relative overflow-hidden scroll-mt-24 md:scroll-mt-28">
         <div className="absolute inset-0 opacity-10" style={{
           backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(242, 27, 45, 0.3) 0%, transparent 50%)'
         }}></div>
