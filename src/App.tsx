@@ -320,14 +320,14 @@ function App() {
         </div>
       </section>
 
-      {/* Threat Assessment */}
+      {/* Assesing Threats */}
       <section className="py-32 bg-gradient-to-b from-black via-[#590505]/10 to-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-20 bg-gradient-to-b from-[#F21313] via-[#D98D30] to-[#F21313]"></div>
             <div>
               <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 12</span>
-              <h2 className="text-5xl font-bold tracking-wide text-[#F2DEA2]">THREAT ASSESSMENT</h2>
+              <h2 className="text-5xl font-bold tracking-wide text-[#F2DEA2]">ASSEING THREATS</h2>
               <p className="text-xl text-[#BF3111] mt-2 tracking-widest uppercase">Hostile Territory: Market Challenges</p>
             </div>
           </div>
