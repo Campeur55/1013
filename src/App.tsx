@@ -240,7 +240,7 @@ function App() {
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-20 bg-gradient-to-b from-[#F21313] via-[#D98D30] to-[#F21313]"></div>
             <div>
-              <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 10</span>
+              <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 2</span>
               <h2 className="text-5xl font-bold tracking-wide text-[#F2DEA2]">PHASE ALPHA: THE GENESIS</h2>
             </div>
           </div>
@@ -283,7 +283,7 @@ function App() {
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-20 bg-gradient-to-b from-[#F21313] via-[#D98D30] to-[#F21313]"></div>
             <div>
-              <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 11</span>
+              <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 3</span>
               <h2 className="text-5xl font-bold tracking-wide text-[#F2DEA2]">INTELLIGENCE REPORT</h2>
               <p className="text-xl text-[#BF3111] mt-2 tracking-widest uppercase">Market Reconnaissance</p>
             </div>
@@ -291,9 +291,9 @@ function App() {
 
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             {[
-              { label: "ANNUAL GROWTH RATE", value: "12%", desc: "YEAR-OVER-YEAR MARKET EXPANSION" },
-              { label: "CAPITAL OUTFLOW", value: "$15M", desc: "ANNUAL SPENDING ON FOREIGN PLATFORMS" },
-              { label: "YOUTH DEMOGRAPHICS", value: "42%", desc: "POPULATION AGED 18-35" }
+              { label: "ANNUAL GROWTH RATE", value: "5.1%", desc: "YEAR-OVER-YEAR MARKET EXPANSION" },
+              { label: "CAPITAL OUTFLOW", value: "$Unkown", desc: "ANNUAL SPENDING ON FOREIGN PLATFORMS" },
+              { label: "YOUTH DEMOGRAPHICS", value: "23.8%", desc: "POPULATION AGED 18-35" }
             ].map((stat, idx) => (
               <div key={idx} className="bg-[#590505]/30 border-l-4 border-[#D98D30] p-8 relative overflow-hidden group hover:bg-[#590505]/50 transition-all">
                 <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-[#F21313]/10 blur-xl"></div>
@@ -307,9 +307,9 @@ function App() {
           <div className="mt-16 space-y-8">
             {[
               { title: "UNMET DEMAND", content: "THE STEADY ANNUAL GROWTH RATE AND SIGNIFICANT CAPITAL OUTFLOW TO FOREIGN PLATFORMS CONFIRM A ROBUST, UNMET DOMESTIC DEMAND. CONSUMERS ACTIVELY SEEK ALTERNATIVES, INDICATING A RIPE OPPORTUNITY FOR LOCAL MARKET SOLUTIONS." },
-              { title: "DIGITAL NATIVE AUDIENCE", content: "THE SUBSTANTIAL YOUTH DEMOGRAPHIC (42% IN THE 18-35 AGE BRACKET) REPRESENTS A DIGITALLY-NATIVE AUDIENCE RECEPTIVE TO MODERN, SOPHISTICATED ONLINE ENTERTAINMENT EXPERIENCES WITH MOBILE-FIRST DESIGN." },
+              { title: "DIGITAL NATIVE AUDIENCE", content: "THE SUBSTANTIAL YOUTH DEMOGRAPHIC (23.8% IN THE 18-35 AGE BRACKET) REPRESENTS A DIGITALLY-NATIVE AUDIENCE RECEPTIVE TO MODERN, SOPHISTICATED ONLINE ENTERTAINMENT EXPERIENCES WITH MOBILE-FIRST DESIGN." },
               { title: "INNOVATION IMPERATIVE", content: "CURRENT MARKET CONDITIONS NECESSITATE AN APPROACH THAT IS BOTH INNOVATIVE AND COMPLIANT, OFFERING A SUPERIOR ALTERNATIVE TO EXISTING OFFSHORE OPTIONS WHILE RESPECTING LOCAL REGULATIONS AND CULTURAL NORMS." },
-              { title: "MARKET GAP", content: "THE $15M ANNUAL CAPITAL OUTFLOW REPRESENTS REVENUE LEAKAGE TO INTERNATIONAL COMPETITORS, HIGHLIGHTING A SIGNIFICANT MARKET GAP THAT A WELL-POSITIONED LOCAL PLAYER COULD CAPTURE." }
+              { title: "MARKET GAP", content: "THE ANNUAL CAPITAL OUTFLOW IS UNKNOWN AND UNDISCLOSED IT, THIS SHOWS THAT REVENUE LEAKAGE TO INTERNATIONAL COMPETITORS, HIGHLIGHTING A SIGNIFICANT MARKET GAP THAT A WELL-POSITIONED LOCAL PLAYER COULD CAPTURE." }
             ].map((item, idx) => (
               <div key={idx} className="bg-black border-2 border-[#D98D30]/30 p-8 hover:border-[#F21313] transition-all relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#590505]/0 via-[#590505]/20 to-[#590505]/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -327,7 +327,7 @@ function App() {
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-20 bg-gradient-to-b from-[#F21313] via-[#D98D30] to-[#F21313]"></div>
             <div>
-              <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 12</span>
+              <span className="text-[#D98D30] text-sm tracking-[0.3em] uppercase">Section 4</span>
               <h2 className="text-5xl font-bold tracking-wide text-[#F2DEA2]">ASSEING THREATS</h2>
               <p className="text-xl text-[#BF3111] mt-2 tracking-widest uppercase">Hostile Territory: Market Challenges</p>
             </div>
@@ -376,8 +376,8 @@ function App() {
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-16 bg-gradient-to-b from-[#F21B2D] to-[#A60321]"></div>
             <div>
-              <span className="text-[#F21B2D] text-sm tracking-widest">SECTION 15</span>
-              <h2 className="text-5xl font-bold">Operation Build</h2>
+              <span className="text-[#F21B2D] text-sm tracking-widest">SECTION 5</span>
+              <h2 className="text-5xl font-bold">Operational Strategy</h2>
               <p className="text-xl text-gray-400 mt-2">Strategic Framework</p>
             </div>
           </div>
@@ -417,7 +417,7 @@ function App() {
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-16 bg-gradient-to-b from-[#F21B2D] to-[#A60321]"></div>
             <div>
-              <span className="text-[#F21B2D] text-sm tracking-widest">SECTION 16</span>
+              <span className="text-[#F21B2D] text-sm tracking-widest">SECTION 6</span>
               <h2 className="text-5xl font-bold">Mission Complete</h2>
               <p className="text-xl text-gray-400 mt-2">Phase Foxtrot: The Vision</p>
             </div>
