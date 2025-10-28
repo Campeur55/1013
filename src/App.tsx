@@ -169,7 +169,7 @@ function App() {
           <div className="h-1 w-48 md:w-64 mx-auto bg-gradient-to-r from-transparent via-[#D98D30] to-transparent mb-8"></div>
 
           <p className="text-2xl md:text-4xl mb-6 tracking-wide text-[#F2DEA2]">WHERE FORTUNE MEETS FIRE</p>
-          <p className="text-xl md:text-2xl mb-8 text-[#D98D30] font-arabic">بلعب الحظ مع الحمرا</p>
+          <p className="text-xl md:text-2xl mb-8 text-[#D98D30] font-arabic">حيث المجد يولد من المخاطرة</p>
           <p className="text-base md:text-lg mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed text-gray-300 tracking-wide">
             STRATEGIC MANAGEMENT ANALYSIS • TUNISIA ENTERTAINMENT SECTOR
           </p>
@@ -197,7 +197,7 @@ function App() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-          <p className="text-5xl md:text-6xl font-bold mb-8 text-[#F2DEA2] tracking-wider">الحمرا مش برّا، الحمرا هنا</p>
+          <p className="text-5xl md:text-6xl font-bold mb-8 text-[#F2DEA2] tracking-wider">وين تبدى اللعبة الحقيقية</p>
           <div className="h-1 w-48 mx-auto bg-[#F2DEA2] mb-8"></div>
           <p className="text-2xl uppercase tracking-widest text-white">The opportunity is not outside, the opportunity is here.</p>
         </div>
@@ -226,7 +226,8 @@ function App() {
               <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-[#F21313]/10 blur-2xl"></div>
               <h3 className="text-2xl font-bold mb-6 text-[#D98D30] tracking-widest uppercase">Framework</h3>
               <p className="text-lg leading-relaxed text-gray-300 tracking-wide">
-                THE PROJECT EMPLOYS MILITARY-STYLE OPERATIONAL TERMINOLOGY TO FRAME STRATEGIC BUSINESS CONCEPTS, MAKING THIS AN ENGAGING FRAMEWORK FOR UNDERSTANDING MARKET RECONNAISSANCE, COMPETITIVE ANALYSIS, AND STRATEGIC PLANNING METHODOLOGIES.
+                 7AMRA ROYALE TRANSFORMED TUNISIA’S CULTURAL FASCINATION WITH RISK INTO A PREMIUM, RESPONSIBLE ENTERTAINMENT EXPERIENCE, CREATING A HIGH-END BRAND THAT MONOPOLIZED A NICHE MARKET. ITS STRATEGIC APPROACH COMBINES MARKET SEGMENTATION, DIFFERENTIATION, AND VALUE PROPOSITION DESIGN TO CAPTURE UNMET DEMAND. IT LEVERAGES OPERATIONAL EXCELLENCE, REGULATORY COMPLIANCE, AND STAKEHOLDER MANAGEMENT. 
+
               </p>
             </div>
           </div>
