@@ -549,47 +549,75 @@ function App() {
             </div>
           </div>
 
-          <div className="mt-16 space-y-12">
+          <div className="mt-16 space-y-16">
+            {/* Problems Encountered */}
             <div>
               <h3 className="text-3xl font-bold mb-8 text-[#F21313]">Problems Encountered</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                {[
-                  { title: "Regulatory Uncertainty", desc: "Online gambling laws in Tunisia and North Africa are often unclear or restrictive. Launching the platform required careful navigation of legal boundaries, and delays or sudden changes could affect operations." },
-                  { title: "Compliance Requirements", desc: "Meeting financial, anti-money laundering (AML), and age-verification rules was complex. Integrating secure local payment options while adhering to banking regulations demanded ongoing monitoring." },
-                  { title: "Ethical Concerns", desc: "Gambling platforms face social and ethical scrutiny. Risks include addiction, underage access, and negative public perception, which could affect user trust and credibility." }
-                ].map((problem, idx) => (
-                  <div key={idx} className="bg-[#590505]/20 border-l-4 border-[#F21313] p-6">
-                    <h4 className="text-xl font-bold mb-3 text-[#F2DEA2]">{problem.title}</h4>
-                    <p className="text-gray-400 leading-relaxed">{problem.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-3xl font-bold mb-8 text-[#D98D30]">Solutions Implemented</h3>
               <div className="space-y-6">
                 {[
-                  { title: "Addressing Regulatory Uncertainty", solutions: [
-                    "Engaged legal advisors to interpret laws and structured games to comply with skill-based or regulated wagering rules",
-                    "Submitted formal applications to authorities and created a compliance roadmap for ongoing adaptation"
-                  ]},
-                  { title: "Meeting Compliance Requirements", solutions: [
-                    "Developed an internal framework for financial transactions, AML, and age verification",
-                    "Integrated secure local payment systems with real-time monitoring, set transaction limits, and conducted monthly audits"
-                  ]},
-                  { title: "Handling Ethical Concerns", solutions: [
-                    "Implemented responsible gaming policies including self-exclusion, deposit limits, and parental controls",
-                    "Launched educational prompts and transparent user agreements to build trust and credibility"
-                  ]}
-                ].map((solution, idx) => (
-                  <div key={idx} className="bg-black border-2 border-[#D98D30]/30 p-8">
-                    <h4 className="text-2xl font-bold mb-4 text-[#F2DEA2]">{solution.title}</h4>
+                  {
+                    title: "Regulatory Uncertainty",
+                    points: [
+                      "Online gambling laws in Tunisia and North Africa are often unclear or restrictive, requiring careful navigation of legal boundaries",
+                      "Regulatory landscape varied significantly between Tunisia, Algeria, and Morocco, with different interpretations of gambling versus skill-based gaming",
+                      "Team faced ambiguity around licensing requirements, operational permissions, and legal status of specific game mechanics",
+                      "Uncertainty created risks around product development timelines, market entry strategies, and long-term operational viability"
+                    ]
+                  },
+                  {
+                    title: "Compliance Requirements",
+                    points: [
+                      "Meeting financial, anti-money laundering (AML), and age-verification rules was complex and required ongoing monitoring",
+                      "Platform needed to align with multiple regulatory frameworks: banking sector requirements, AML protocols, and data protection standards",
+                      "Each payment method (e-dinar, mobile wallets, bank transfers) came with distinct technical integration challenges and compliance obligations",
+                      "Required systems for transaction monitoring, suspicious activity reporting, and user identity verification while maintaining smooth user experience"
+                    ]
+                  },
+                  {
+                    title: "Ethical Concerns",
+                    points: [
+                      "Gambling platforms face social and ethical scrutiny regarding addiction, underage access, and negative public perception",
+                      "Cultural context in North Africa added complexity, as gambling carries social stigma in many communities",
+                      "Founders recognized that user harm (financial, psychological, or social) could undermine the business and damage the broader digital entertainment sector",
+                      "Balancing commercial objectives with user protection required embedding ethical considerations into every operational decision"
+                    ]
+                  },
+                  {
+                    title: "Market Entry Barriers",
+                    points: [
+                      "Establishing credibility as a local startup in a market dominated by international platforms presented multiple challenges",
+                      "Users had existing relationships with foreign competitors, requiring demonstration of technical reliability and financial security",
+                      "Faced skepticism from potential partners (telecom operators, payment providers) who viewed the gaming sector as high-risk",
+                      "Building partnerships was critical for payment integration and user acquisition but required extensive negotiation and proof of concept"
+                    ]
+                  },
+                  {
+                    title: "Technical Infrastructure Limitations",
+                    points: [
+                      "Developing a mobile-first platform that could handle real-time gaming, secure transactions, and data protection required capabilities beyond initial resources",
+                      "Needed to build scalable server architecture, implement encryption protocols, and ensure platform stability under varying North African network conditions",
+                      "Limited access to specialized technical talent in the region meant developing solutions internally or relying on remote collaboration",
+                      "Increased development time and costs due to talent constraints"
+                    ]
+                  },
+                  {
+                    title: "Payment System Integration",
+                    points: [
+                      "Local payment infrastructure in North Africa operates differently from global systems",
+                      "E-dinar adoption varies by region, mobile wallet standards are not uniform across countries",
+                      "Banking APIs often lack documentation or support available in more developed markets",
+                      "Encountered technical compatibility issues, transaction processing delays, and limited customer support from financial service providers",
+                      "Each integration required custom development work and direct coordination with multiple financial institutions"
+                    ]
+                  }
+                ].map((problem, idx) => (
+                  <div key={idx} className="bg-[#590505]/20 border-l-4 border-[#F21313] p-8">
+                    <h4 className="text-2xl font-bold mb-4 text-[#F2DEA2]">{problem.title}</h4>
                     <ul className="space-y-3">
-                      {solution.solutions.map((sol, i) => (
+                      {problem.points.map((point, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <Check className="w-5 h-5 text-[#D98D30] mt-1 flex-shrink-0" />
-                          <span className="text-gray-300">{sol}</span>
+                          <div className="w-1.5 h-1.5 bg-[#F21313] rounded-full mt-2.5 flex-shrink-0"></div>
+                          <span className="text-gray-400 leading-relaxed">{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -598,27 +626,155 @@ function App() {
               </div>
             </div>
 
-            <div className="bg-[#590505]/30 border-2 border-[#D98D30] p-10">
-              <h3 className="text-2xl font-bold mb-6 text-[#D98D30]">Strategic Thinking & Methods</h3>
-              <div className="grid md:grid-cols-2 gap-6">
+            {/* Solutions Implemented */}
+            <div>
+              <h3 className="text-3xl font-bold mb-8 text-[#D98D30]">Solutions Implemented</h3>
+              <div className="space-y-6">
                 {[
-                  "Proactive Risk Management: Anticipated regulatory, compliance, and ethical risks before market entry",
-                  "Stakeholder Engagement: Maintained continuous communication with regulators and partners",
-                  "Structured Compliance Systems: Designed formal processes and monitoring tools",
-                  "Ethics-First Design: Embedded responsible gaming into product design",
-                  "Adaptive Planning: Used scenario planning and flexible roadmaps",
-                  "Data-Driven Decision Making: Leveraged user analytics, market research, and KPIs to guide product features, marketing strategies, and operational adjustments"
-                ].map((method, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-[#D98D30] rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="text-gray-300">{method}</span>
+                  {
+                    title: "Addressing Regulatory Uncertainty",
+                    solutions: [
+                      "Engaged legal advisors with experience in gaming, fintech, and digital services across Tunisia and neighboring countries",
+                      "Advisors conducted regulatory mapping exercises to identify applicable laws, gray areas, and enforcement patterns",
+                      "Structured game mechanics to emphasize skill-based elements and minimize pure chance components, positioning platform within more defensible legal territory",
+                      "Submitted formal applications and inquiry letters to relevant authorities, including Tunisia's Ministry of Communication Technologies and banking regulators",
+                      "Created compliance roadmap with multiple scenarios (full licensing to operating under existing digital service frameworks) for quick adaptation",
+                      "Established legal review process where new game features and promotional campaigns were assessed for regulatory risk before launch",
+                      "Maintained compliance calendar tracking regulatory changes, renewal dates, and reporting obligations across target markets"
+                    ]
+                  },
+                  {
+                    title: "Meeting Compliance Requirements",
+                    solutions: [
+                      "Developed internal compliance framework documenting policies, procedures, and responsibilities for financial transactions, AML protocols, and age verification",
+                      "Framework included detailed workflows for user registration, identity verification, transaction limits, and suspicious activity detection",
+                      "Implemented multi-step age verification: government-issued ID submission, facial recognition matching, and automated document validation",
+                      "System flagged incomplete or inconsistent submissions for manual review by dedicated compliance officer",
+                      "Integrated secure local payment systems with real-time transaction monitoring tracking patterns (rapid deposit sequences, unusual withdrawal requests, transactions exceeding preset thresholds)",
+                      "Platform automatically applied transaction limits based on user verification levels and account history, with manual override capabilities for exceptional cases",
+                      "Conducted monthly audits reviewing random samples of transactions, user accounts, and system logs to identify compliance gaps or technical failures",
+                      "Audit findings fed into quarterly compliance reports shared with legal advisors and regulatory authorities when required",
+                      "Established relationships with payment providers' compliance teams to coordinate on shared AML obligations and incident reporting"
+                    ]
+                  },
+                  {
+                    title: "Handling Ethical Concerns",
+                    solutions: [
+                      "Implemented responsible gaming policies including self-exclusion tools allowing users to block access for defined periods (24 hours, one week, one month, or permanently)",
+                      "Deposit limits could be set daily, weekly, or monthly, with cooling-off periods before increases took effect",
+                      "Platform included session time tracking with optional reminders and automatic logout features",
+                      "Educational prompts appeared at registration, before first deposits, and periodically during gameplay, explaining odds, house advantages, and risks of excessive play",
+                      "Prompts used clear language in both Arabic and French, avoiding technical jargon",
+                      "User agreements explicitly outlined entertainment nature of platform, possibility of financial loss, and available support resources",
+                      "Partnered with Tunisian mental health organization to provide links to gambling addiction support services",
+                      "Trained customer support staff to recognize signs of problem gambling",
+                      "Established internal ethics committee reviewing user complaint patterns, spending behaviors, and platform features for potential harm indicators",
+                      "Engaged in selective stakeholder communication, meeting with university gaming clubs, youth organizations, and technology associations",
+                      "Positioned 7amra Royale as regulated alternative to unregulated international sites, emphasizing user protection features unavailable on foreign platforms"
+                    ]
+                  },
+                  {
+                    title: "Overcoming Market Entry Barriers",
+                    solutions: [
+                      "Adopted gradual market entry approach, launching first to closed beta group of 500 users recruited through university networks and tech communities",
+                      "Demonstrated platform stability and gathered testimonials before broader marketing",
+                      "Documented all technical performance metrics, security measures, and user satisfaction scores to build credibility with potential partners",
+                      "Prepared detailed business proposals for telecom and payment provider partnerships highlighting mutual benefits: increased mobile data usage, transaction fee revenue, and access to growing digital entertainment market",
+                      "Offered pilot programs with limited user groups, allowing partners to assess viability with minimal commitment",
+                      "Emphasized compliance framework and AML measures when approaching payment providers to address risk concerns",
+                      "Leveraged Tunisian origin as differentiation point, emphasizing local customer support, culturally relevant game themes, and understanding of North African user preferences",
+                      "Created comparison materials showing how platform addressed pain points users experienced with international competitors (unclear payment processes, foreign currency complications, inaccessible customer service)"
+                    ]
+                  },
+                  {
+                    title: "Building Technical Infrastructure",
+                    solutions: [
+                      "Started with minimum viable product using cloud hosting services offering scalability without large upfront infrastructure investments",
+                      "Implemented content delivery networks to improve loading times and reduce latency for users across different North African countries with varying internet speeds",
+                      "Adopted industry-standard encryption protocols for data transmission and storage",
+                      "Implemented multi-factor authentication options and conducted regular penetration testing using third-party security firms",
+                      "Established automated backup systems with geographic redundancy to protect against data loss",
+                      "Dedicated time to training initial team members, investing in online courses and certifications in mobile development, cybersecurity, and payment systems integration",
+                      "Established relationships with freelance developers in other regions for specialized skills (payment gateway integration, game algorithm development)",
+                      "Designed platform architecture with modularity, allowing different components (user management, payment processing, game engines, compliance monitoring) to be updated or replaced independently",
+                      "Reduced technical debt and allowed for iterative improvements based on user feedback and performance data"
+                    ]
+                  },
+                  {
+                    title: "Solving Payment Integration Challenges",
+                    solutions: [
+                      "Conducted direct outreach to e-dinar operators and mobile wallet providers, requesting technical documentation and API access",
+                      "Connected with other startups in Tunisia's fintech community to learn from their integration experiences and identify helpful contacts within financial institutions",
+                      "Developed custom middleware to bridge compatibility gaps between platform and various payment systems, standardizing transaction formats and responses",
+                      "Middleware included error handling for common issues (network timeouts, incomplete transactions, currency conversion discrepancies)",
+                      "Implemented testing environments simulating various transaction scenarios (successful payments, failed transactions, refunds, edge cases) to identify and fix issues before live deployment",
+                      "Established direct communication channels with payment provider technical support teams to expedite problem resolution during beta testing and after launch",
+                      "Created fallback system where users could complete transactions through alternative methods if primary payment option failed, reducing transaction abandonment",
+                      "Monitored payment success rates by method and provider, using data to prioritize integration improvements and inform partnership discussions"
+                    ]
+                  }
+                ].map((solution, idx) => (
+                  <div key={idx} className="bg-black border-2 border-[#D98D30]/30 p-8 hover:border-[#D98D30] transition-all relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#590505]/0 via-[#590505]/20 to-[#590505]/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <h4 className="text-2xl font-bold mb-4 text-[#F2DEA2] relative z-10">{solution.title}</h4>
+                    <ul className="space-y-3 relative z-10">
+                      {solution.solutions.map((sol, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <Check className="w-5 h-5 text-[#D98D30] mt-1 flex-shrink-0" />
+                          <span className="text-gray-300 leading-relaxed">{sol}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-[#590505]/40 via-[#BF3111]/40 to-[#590505]/40 border-t-4 border-b-4 border-[#D98D30] p-12 text-center">
-              <blockquote className="text-2xl md:text-3xl font-bold text-[#F2DEA2] italic leading-relaxed">
+            {/* Strategic Thinking & Methods */}
+            <div>
+              <h3 className="text-3xl font-bold mb-8 text-[#D98D30]">Strategic Thinking & Methods</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {[
+                  {
+                    title: "Proactive Risk Management",
+                    desc: "Conducted structured risk assessments before major decisions, identifying potential legal, technical, financial, and reputational risks. Process occurred during initial business planning, before beta launch, and quarterly thereafter, with prepared response plans for each scenario."
+                  },
+                  {
+                    title: "Stakeholder Engagement",
+                    desc: "Maintained ongoing dialogue with regulators, payment providers, telecom partners, and users throughout development and operations. Provided periodic updates positioning founders as cooperative partners while gathering feedback to prioritize feature development."
+                  },
+                  {
+                    title: "Structured Compliance Systems",
+                    desc: "Created documented procedures for every regulated activity with assigned compliance officer responsible for framework maintenance, team training, and regulatory communication. Implemented compliance management software to track verifications, monitor transactions, and maintain audit records."
+                  },
+                  {
+                    title: "Ethics-First Design",
+                    desc: "Integrated ethical considerations into product design from inception rather than adding later. Evaluated game mechanics for addiction risk, avoided engagement features that encourage excessive play, and prioritized information transparency in user interfaces."
+                  },
+                  {
+                    title: "Adaptive Planning",
+                    desc: "Developed 24-month roadmap with defined milestones while maintaining flexibility through three-month planning cycles with scenario analysis. Used realistic, optimistic, and pessimistic outcome scenarios to allow quick pivots based on market feedback and technical challenges."
+                  },
+                  {
+                    title: "Data-Driven Decision Making",
+                    desc: "Implemented analytics systems from beta launch tracking user acquisition, session duration, game preferences, deposit patterns, and retention. Established KPIs reviewed weekly, informing decisions about game development, payment prioritization, and marketing spend allocation."
+                  }
+                ].map((method, idx) => (
+                  <div key={idx} className="bg-[#590505]/20 border-l-4 border-[#D98D30] p-6">
+                    <h4 className="text-lg font-bold mb-3 text-[#F2DEA2]">{method.title}</h4>
+                    <p className="text-gray-400 leading-relaxed text-sm">{method.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Closing Quote */}
+            <div className="bg-gradient-to-r from-[#590505]/40 via-[#BF3111]/40 to-[#590505]/40 border-t-4 border-b-4 border-[#D98D30] p-12 text-center relative overflow-hidden">
+              <div className="absolute inset-0 opacity-5" style={{
+                backgroundImage: 'radial-gradient(circle, #F2DEA2 1px, transparent 1px)',
+                backgroundSize: '30px 30px'
+              }}></div>
+              <blockquote className="text-2xl md:text-3xl font-bold text-[#F2DEA2] italic leading-relaxed relative z-10">
                 "Every challenge became an opportunity to strengthen our foundation and build something more resilient, ethical, and trusted."
               </blockquote>
             </div>
